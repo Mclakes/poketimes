@@ -1,6 +1,6 @@
 import React from 'react';
 
-const Rainbow = (wrappedComponent) =>  {
+const Rainbow = (WrappedComponent) =>  {
 
 
     const colours = [ "red", "pink", "orange", "blue", "green", "yellow"];
@@ -10,7 +10,7 @@ const Rainbow = (wrappedComponent) =>  {
     return (props) => {
         return (
             <div className={className}>
-                <wrappedComponent {...props}/>
+                <WrappedComponent {...props}/>
             </div>
         )
     }
