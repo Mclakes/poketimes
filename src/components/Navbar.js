@@ -1,8 +1,14 @@
-import React from "react";
-import { Link, NavLink, useLocation, useNavigate, useParams } from "react-router-dom";
+import React, {useEffect} from "react";
+import { Link, NavLink, useNavigate } from "react-router-dom";
 
 const Navbar = (props) => {
     // console.log(props)
+    const navigate = useNavigate()
+    useEffect(() => {
+        const timer = setTimeout(() => navigate("/about"), 2000);
+        return () => clearTimeout(timer);
+      });
+      
     return (
         <nav className="nav-wrapper red darken-3">
             <div className="container">
@@ -17,19 +23,4 @@ const Navbar = (props) => {
     )
 }
 
-function withRouter (Component) {
-    function ComponentWithRouterProp(props) {
-        let location = useLocation();
-        let navigate = useNavigate();
-        let params = useParams();
-        return (
-          <Component
-            {...props}
-            router={{ location, navigate, params }}
-          />
-        );
-    }
-    return ComponentWithRouterProp;        
-}
-
-export default withRouter(Navbar);
+export default Navbar;
