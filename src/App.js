@@ -13,10 +13,11 @@ class App extends Component {
         <div>
           <Navbar />
           <Routes>
-            <Route path='/' element={<Home />} />
-            <Route path='/about' element={<About />} />
-            <Route path='/contact' element={<Contact />} />
-            <Route path='/:post_id' element={<Post />} />
+            {/* <Switch></Switch> is deprecated */}
+              <Route path='/' element={<Home />} />
+              <Route path='/about' element={<About />} />
+              <Route path='/contact' element={<Contact />} />
+              <Route path='/:post_id' element={<Post />} />         
           </Routes>
         </div>
       </BrowserRouter>
