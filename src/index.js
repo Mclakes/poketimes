@@ -3,13 +3,14 @@ import ReactDOM from 'react-dom/client';
 import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
-import Redux from 'redux';
+// import Redux from 'redux';
 // import { createSource } from 'redux-source';
 import { Provider } from 'react-redux';
-import rootReducer from './reducers/rootReducer';
+// import { configureStore, combineReducers } from '@reduxjs/toolkit';  
 import { configureStore } from '@reduxjs/toolkit';
+import rootReducer from './reducers/rootReducer';
 
-const store = configureStore(rootReducer);
+const store = configureStore({reducer: rootReducer});
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(

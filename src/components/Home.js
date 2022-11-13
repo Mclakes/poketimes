@@ -3,6 +3,7 @@ import React, { Component } from "react";
 import { Link } from 'react-router-dom';
 import Pokeball from '../pokeball.png';
 import { connect } from 'react-redux';
+// import rootReducer from '../reducers/rootReducer';
 
 
 class Home extends Component {
@@ -20,11 +21,11 @@ class Home extends Component {
     //     })
     // }
     render() {
-        console.log(this.props)
+        // console.log(this.props)
         // const { posts } = this.state
         const { posts } = this.props
         const postList  = posts.length ? (
-            posts.map(post => {
+            posts.map((post) => {
                 return (
                     <div className="post card" key={post.id}>
                         <img src={Pokeball} alt="A pokeball"/>
