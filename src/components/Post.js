@@ -1,5 +1,5 @@
-import React, { Component } from "react";
-import { useParams } from "react-router-dom";
+import React, { Component, useEffect } from "react";
+import { useParams, useNavigate } from "react-router-dom";
 import { connect } from "react-redux";
 // import axios from "axios";
 
@@ -47,11 +47,30 @@ class Post extends Component {
     //         </div>
     //     )
     // }
+    handleClick = () => {
+        // this.props.deletePost(this.props.params.post_id)
+        this.props.deletePost(this.props.post.id)
+        console.log(this.props)
+        // const navigate = useNavigate()
+        // // useEffect(() => {
+        // //     const timer = setTimeout(() => this.props.navigate("/"), 1000);
+        // //         return () => clearTimeout(timer);
+        // // });
+        // // this.props.history.push('/')
+        // this.props.navigate("/")
+    }
+
     render() {
+        console.log(this.props) 
         const post = this.props.post ? (
             <div className="post">
                 <h4 className="center">{this.props.post.title}</h4>
                 <p>{this.props.post.body}</p>
+                <div className="center">
+                    <button className="btn grey" onClick={this.handleClick}>
+                        Delete Post
+                    </button>
+                </div>
             </div>
         ) : (
             <div className="center">Loading post...</div>
@@ -69,11 +88,16 @@ const mapStateToProps = (state, ownProps) => {
     //     return props => <Component {...props} params={useParams()} />;
     //   }
     let id = (ownProps.params.post_id);
-    console.log(id)
     return {
         post: state.posts.find(post => post.id === id)
     }
 
 }
 
-export default withParams(connect(mapStateToProps)(Post));
+const mapDispatchToProps = (dispatch) => {
+    return {
+        deletePost : (id) => {dispatch({type : 'DELETE_POST', id: id})}
+    }
+}
+
+export default withParams(connect(mapStateToProps, mapDispatchToProps)(Post));
