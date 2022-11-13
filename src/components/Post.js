@@ -68,9 +68,7 @@ const mapStateToProps = (state, ownProps) => {
     // function withParams(Component) {
     //     return props => <Component {...props} params={useParams()} />;
     //   }
-
-    let id = (ownProps);
-    // this.props.params.post_id
+    let id = (ownProps.params.post_id);
     console.log(id)
     return {
         post: state.posts.find(post => post.id === id)
@@ -78,4 +76,4 @@ const mapStateToProps = (state, ownProps) => {
 
 }
 
-export default connect(mapStateToProps)(withParams(Post));
+export default withParams(connect(mapStateToProps)(Post));
