@@ -39,10 +39,13 @@ class Home extends Component {
                 )
             })
         ) : (
-            <div className="center">No posts yet</div>
+            <div className="container">
+            <p className="center"><em>No post yet...</em></p>
+        </div>
         )
         return (
             <div className="container home">
+                <h4 className="center">Home</h4>
                 {postList}
                 {/* <h4 className="center">Home</h4>
                 <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Asperiores eveniet quis rerum, nisi nihil ad pariatur. Autem, quasi voluptas fugiat, sequi quos earum quod nihil rerum, temporibus praesentium eum id.</p> */}

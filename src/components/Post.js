@@ -1,6 +1,9 @@
-import React, { Component, useEffect } from "react";
-import { useParams, useNavigate, useHistory, useLocation } from "react-router-dom";
+import React, { Component, } from "react";
+//useEffect 
+import { useParams, } from "react-router-dom";
+//useNavigate, useHistory, useLocation 
 import { connect } from "react-redux";
+import withRouter from "../hoc/withRouter";
 // import axios from "axios";
 
 function withParams(Component) {
@@ -51,11 +54,8 @@ class Post extends Component {
     handleClick = () => {
         // this.props.deletePost(this.props.params.post_id)
         this.props.deletePost(this.props.post.id);
-         const navigate = useNavigate()
-        useEffect(() => {
-            const timer = setTimeout(() => navigate("/about"), 2000);
-            return () => clearTimeout(timer);
-        });
+        const { navigate } = this.props
+        navigate('/')
 
     }
 
@@ -99,4 +99,4 @@ const mapDispatchToProps = (dispatch) => {
     }
 }
 
-export default withParams(connect(mapStateToProps, mapDispatchToProps)(Post));
+export default withParams(withRouter(connect(mapStateToProps, mapDispatchToProps)(Post)));
