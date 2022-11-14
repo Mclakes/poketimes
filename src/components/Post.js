@@ -1,12 +1,11 @@
 import React, { Component, useEffect } from "react";
-import { useParams, useNavigate } from "react-router-dom";
+import { useParams, useNavigate, useHistory } from "react-router-dom";
 import { connect } from "react-redux";
 // import axios from "axios";
 
 function withParams(Component) {
     return props => <Component {...props} params={useParams()} />;
   }
-
 class Post extends Component {
     // state = {
     //     post: null
@@ -47,18 +46,37 @@ class Post extends Component {
     //         </div>
     //     )
     // }
+
+    
     handleClick = () => {
         // this.props.deletePost(this.props.params.post_id)
         this.props.deletePost(this.props.post.id)
-        console.log(this.props)
-        // const navigate = useNavigate()
-        // // useEffect(() => {
-        // //     const timer = setTimeout(() => this.props.navigate("/"), 1000);
-        // //         return () => clearTimeout(timer);
-        // // });
-        // // this.props.history.push('/')
+        console.log(this.props);
+        // this.props.navigate.push("/")
+        const Navigate = () => {
+            const navigate = useNavigate();
+            navigate('/')
+            // useEffect(() => {
+            //     const timer = setTimeout(() => navigate("/"), 1000);
+            //     return () => clearTimeout(timer);
+            //   });
+            //   Navigate();
+            }
+        
+        
+        
+        // useEffect(() => {
+        //     const timer = setTimeout(() => this.props.navigate("/"), 1000);
+        //         return () => clearTimeout(timer);
+        // });
+        // this.props.history.push('/')
+        // useEffect(() => {
+        //     const timer = () => this.props.useNavigate('/')
+        //     return timer
+        // })
         // this.props.navigate("/")
     }
+    Navigate();
 
     render() {
         console.log(this.props) 
