@@ -1,5 +1,5 @@
 import React, { Component, useEffect } from "react";
-import { useParams, useNavigate, useHistory } from "react-router-dom";
+import { useParams, useNavigate, useHistory, useLocation } from "react-router-dom";
 import { connect } from "react-redux";
 // import axios from "axios";
 
@@ -50,33 +50,14 @@ class Post extends Component {
     
     handleClick = () => {
         // this.props.deletePost(this.props.params.post_id)
-        this.props.deletePost(this.props.post.id)
-        console.log(this.props);
-        // this.props.navigate.push("/")
-        const Navigate = () => {
-            const navigate = useNavigate();
-            navigate('/')
-            // useEffect(() => {
-            //     const timer = setTimeout(() => navigate("/"), 1000);
-            //     return () => clearTimeout(timer);
-            //   });
-            //   Navigate();
-            }
-        
-        
-        
-        // useEffect(() => {
-        //     const timer = setTimeout(() => this.props.navigate("/"), 1000);
-        //         return () => clearTimeout(timer);
-        // });
-        // this.props.history.push('/')
-        // useEffect(() => {
-        //     const timer = () => this.props.useNavigate('/')
-        //     return timer
-        // })
-        // this.props.navigate("/")
+        this.props.deletePost(this.props.post.id);
+         const navigate = useNavigate()
+        useEffect(() => {
+            const timer = setTimeout(() => navigate("/about"), 2000);
+            return () => clearTimeout(timer);
+        });
+
     }
-    Navigate();
 
     render() {
         console.log(this.props) 
@@ -85,7 +66,7 @@ class Post extends Component {
                 <h4 className="center">{this.props.post.title}</h4>
                 <p>{this.props.post.body}</p>
                 <div className="center">
-                    <button className="btn grey" onClick={this.handleClick}>
+                    <button className="btn grey" onClick={() => this.handleClick()}>
                         Delete Post
                     </button>
                 </div>

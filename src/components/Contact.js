@@ -8,7 +8,7 @@ const Contact = (props) => {
     const navigate = useNavigate();
     // // const [Lekan, setLekan] = useState("");
     // navigate("/about");
-
+    // console.log(this.props)
     useEffect(() => {
         const timer = setTimeout(() => navigate("/about"), 2000);
         return () => clearTimeout(timer);
