@@ -5,6 +5,7 @@ import { useParams, } from "react-router-dom";
 import { connect } from "react-redux";
 import withRouter from "../hoc/withRouter";
 // import axios from "axios";
+import { deletePost } from "../actions/postActions";
 
 function withParams(Component) {
     return props => <Component {...props} params={useParams()} />;
@@ -95,7 +96,7 @@ const mapStateToProps = (state, ownProps) => {
 
 const mapDispatchToProps = (dispatch) => {
     return {
-        deletePost : (id) => {dispatch({type : 'DELETE_POST', id: id})}
+        deletePost : (id) => {dispatch(deletePost(id))}
     }
 }
 
